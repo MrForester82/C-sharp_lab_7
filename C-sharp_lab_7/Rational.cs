@@ -10,6 +10,7 @@ namespace C_sharp_lab_7
         private BigInteger n;
         private BigInteger sign;
 
+
         public Rational(BigInteger a, BigInteger b)
         {
             if(a != 0 && b != 0)
@@ -31,7 +32,6 @@ namespace C_sharp_lab_7
                 makeDivided(ref a, b);
                 m = a;
                 n = b;
-
             }
             else
             {
@@ -60,6 +60,7 @@ namespace C_sharp_lab_7
             return a * b / BigInteger.GreatestCommonDivisor(a, b);
         }
 
+        // арифметика ------------------------------------------------------------------------
         public static Rational operator+(Rational left, Rational right)
         {
             BigInteger totalDivisor = listCommonMultiple(left.n, right.n);
@@ -89,6 +90,77 @@ namespace C_sharp_lab_7
             reverseRight.printRational();
             return new Rational((left * reverseRight).m + (left * reverseRight).divided * (left * reverseRight).n, (left * reverseRight).n * (left * reverseRight).sign);
         }
+        // арифметика ------------------------------------------------------------------------
+
+        // булевы операции ------------------------------------------------------------------------
+        public static bool operator ==(Rational left, Rational right)
+        {
+            Object leftAsObj = left as Object;
+            Object rightAsObj = right as Object;
+            if(leftAsObj == null || rightAsObj == null)
+            {
+                return leftAsObj == rightAsObj;
+            }
+            return left.sign == right.sign && left.m == right.m && left.n == right.n;
+        }
+
+        public static bool operator !=(Rational left, Rational right)
+        {
+            return !(left == right);
+        }
+
+        public static bool operator >(Rational left, Rational right)
+        {
+            float lm = (float)(left.m + left.n * left.divided);
+            float ln = (float)left.n * (float)left.sign;
+            float rm = (float)(right.m + right.n * right.divided);
+            float rn = (float)right.n * (float)right.sign;
+
+            return (lm/ln > rm/rn);
+        }
+
+        public static bool operator <(Rational left, Rational right)
+        {
+            float lm = (float)(left.m + left.n * left.divided);
+            float ln = (float)left.n * (float)left.sign;
+            float rm = (float)(right.m + right.n * right.divided);
+            float rn = (float)right.n * (float)right.sign;
+
+            return (lm / ln < rm / rn);
+        }
+
+        public static bool operator >(Rational left, float right)
+        {
+            float lm = (float)(left.m + left.n * left.divided);
+            float ln = (float)left.n * (float)left.sign;
+
+            return (lm / ln > right);
+        }
+
+        public static bool operator <(Rational left, float right)
+        {
+            float lm = (float)(left.m + left.n * left.divided);
+            float ln = (float)left.n * (float)left.sign;
+
+            return (lm / ln < right);
+        }
+
+        public static bool operator >(float left, Rational right)
+        {
+            float rm = (float)(right.m + right.n * right.divided);
+            float rn = (float)right.n * (float)right.sign;
+
+            return (left > rm / rn);
+        }
+
+        public static bool operator <(float left, Rational right)
+        {
+            float rm = (float)(right.m + right.n * right.divided);
+            float rn = (float)right.n * (float)right.sign;
+
+            return (left < rm / rn);
+        }
+        // булевы операции ------------------------------------------------------------------------
 
         public override string ToString()
         {

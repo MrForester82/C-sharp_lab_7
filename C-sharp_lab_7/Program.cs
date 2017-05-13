@@ -28,6 +28,9 @@ namespace C_sharp_lab_7
             Rational num3 = new Rational(2, 5);
             num3.printRational();
 
+            Rational num4 = new Rational(2, 5);
+            Console.WriteLine();
+
             (num1 + num3).printRational();
 
             (num1 - num3).printRational();
@@ -35,6 +38,20 @@ namespace C_sharp_lab_7
             (num1 * num3).printRational();
 
             (num1 / num3).printRational();
+
+            Console.WriteLine(num1 == null);
+
+            Console.WriteLine(num3 == num4);
+
+            Console.WriteLine(num1 > num3);
+
+            Console.WriteLine(num1 < num3);
+
+            Console.WriteLine(new Rational(87, 88) < new Rational(86, 87));
+
+            Console.WriteLine(num1 > 3.14F);
+
+            Console.WriteLine(3.14F < num3);
         }
     }
 }

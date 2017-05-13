@@ -10,6 +10,7 @@ namespace C_sharp_lab_7
     {
         static void Main(string[] args)
         {
+
         }
     }
 }

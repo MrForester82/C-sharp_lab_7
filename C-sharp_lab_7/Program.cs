@@ -18,6 +18,15 @@ namespace C_sharp_lab_7
             Console.WriteLine(gregor.getHealth());
             //Console.WriteLine(gregor.getSalary());
 
+            Console.WriteLine();
+
+            Rational num1 = new Rational(9, 4);
+            num1.printRational();
+
+            Rational num2 = new Rational(0, 4);
+
+            Rational num3 = new Rational(2, 5);
+            num3.printRational();
         }
     }
 }
